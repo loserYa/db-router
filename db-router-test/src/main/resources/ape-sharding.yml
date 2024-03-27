@@ -1,0 +1,29 @@
+# 总的自定义路由规则参数
+params: custom
+# 总的路由策略
+strategy: hash
+# 总的分库数
+dbCount: 2
+# 总的分表数
+tbCount: 2
+# 分表配置按表自定义 优先级比总的高
+tables:
+  # 不分库不分表 不用配置 sys_user
+  # 分库、分表
+  - table: sys_loser
+    key: id
+    dbCount: 2
+    tbCount: 2
+    strategy: loser
+  # 分库、不分表
+  - table: sys_lusir
+    key: id
+    dbCount: 2
+    tbCount: 1
+    strategy: hash
+  # 不分库、分表
+  - table: sys_alan
+    key: id
+    dbCount: 1
+    tbCount: 2
+    strategy: remainder
