@@ -26,7 +26,7 @@ public class RemainderRouterHandler implements RouterHandler<Integer> {
         int res = buildShardValue(boundSql, key) + 1;
         int dbIdx = res % dbCount + 1;
         int tbIdx = res % tableCount + 1;
-        return new Router(dbIdx, tbIdx);
+        return new Router(String.valueOf(dbIdx), String.valueOf(tbIdx));
     }
 
     @Override

@@ -34,8 +34,8 @@ public class SqlHandler {
         int dbCount = tableInfo.getDbCount() > 0 ? tableInfo.getDbCount() : shadingProperties.getDbCount();
         int tbCount = tableInfo.getTbCount() > 0 ? tableInfo.getTbCount() : shadingProperties.getDbCount();
         Router router = routerHandler.doRouter(boundSql, tableInfo.getKey(), dbCount, tbCount, shadingProperties.getParams());
-        if (dbCount == 1) router.setDbIndex(0);
-        if (tbCount == 1) router.setTbIndex(0);
+        if (dbCount == 1) router.setDbIndex("");
+        if (tbCount == 1) router.setTbIndex("");
         ReplaceSql replaceSql = replaceSql(sql, table, router.getTbIndex());
         if (StrUtil.isNotEmpty(replaceSql.getNewSql())) {
             DBContextHolder.setTbKey(replaceSql.getNewSql());
@@ -50,13 +50,13 @@ public class SqlHandler {
      * @param sql 携带逻辑表的sql
      * @return 替换成物理表的sql
      */
-    public ReplaceSql replaceSql(String sql, String table, Integer tableIndex) {
+    public ReplaceSql replaceSql(String sql, String table, String tableIndex) {
 
         ReplaceSql replaceSql = new ReplaceSql(sql, "");
         if (StrUtil.isEmpty(table)) {
             return replaceSql;
         }
-        if (Objects.isNull(tableIndex) || tableIndex <= 0) {
+        if (Objects.isNull(tableIndex) || tableIndex.isEmpty() || tableIndex.equals("0")) {
             return replaceSql;
         }
         String replace = sql.replace(table, table + String.format(ConfigUtils.getTbFormat(), tableIndex));

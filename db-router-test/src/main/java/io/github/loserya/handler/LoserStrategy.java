@@ -14,7 +14,7 @@ public class LoserStrategy implements RouterHandler<Long> {
 
     @Override
     public Router doRouter(BoundSql boundSql, String key, int dbCount, int tableCount, String params) {
-        return new Router(1, 1);
+        return new Router("1", "1");
     }
 
     @Override

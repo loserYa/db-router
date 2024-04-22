@@ -1,19 +1,18 @@
 package io.github.loserya.entity;
 
-
 public class Router {
 
     /**
      * 数据库下标
      */
-    private int dbIndex;
+    private String dbIndex;
 
     /**
      * 表下标
      */
-    private int tbIndex;
+    private String tbIndex;
 
-    public Router(int dbIndex, int tbIndex) {
+    public Router(String dbIndex, String tbIndex) {
         this.dbIndex = dbIndex;
         this.tbIndex = tbIndex;
     }
@@ -21,19 +20,19 @@ public class Router {
     public Router() {
     }
 
-    public int getDbIndex() {
+    public String getDbIndex() {
         return dbIndex;
     }
 
-    public void setDbIndex(int dbIndex) {
+    public void setDbIndex(String dbIndex) {
         this.dbIndex = dbIndex;
     }
 
-    public int getTbIndex() {
+    public String getTbIndex() {
         return tbIndex;
     }
 
-    public void setTbIndex(int tbIndex) {
+    public void setTbIndex(String tbIndex) {
         this.tbIndex = tbIndex;
     }
 }

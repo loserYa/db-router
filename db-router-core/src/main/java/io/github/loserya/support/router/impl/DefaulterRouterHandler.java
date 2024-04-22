@@ -27,7 +27,7 @@ public class DefaulterRouterHandler implements RouterHandler<Object> {
         int idx = (size - 1) & (value.hashCode() ^ (value.hashCode() >>> 16));
         int dbIdx = idx / tableCount + 1;
         int tbIdx = idx - tableCount * (dbIdx - 1) + 1;
-        return new Router(dbIdx, tbIdx);
+        return new Router(String.valueOf(dbIdx), String.valueOf(tbIdx));
     }
 
     @Override
